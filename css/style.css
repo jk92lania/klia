@@ -33,6 +33,7 @@ button {
 
 html {
     font-size: 10px;
+    overflow-x: hidden;
 }
 
 body {
@@ -246,7 +247,76 @@ body {
     cursor: pointer;
 }
 
+/* 오른쪽 고정 기능 */
+.control {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    z-index: 999999;
+}
 
+.control-menu {
+    position: relative;
+    display: block;
+}
+
+.control-menu::before {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    display: block;
+    width: 1px;
+    height: calc(35px * 4);
+    background-color: #b6b9bc;
+
+}
+
+.control-menu li {
+    position: relative;
+    display: block;
+    text-align: right;
+    margin-bottom: 5px;    
+}
+
+.control-menu li a {
+    display: inline-block;
+    position: relative;
+    padding-left: 17px;
+    padding-right: 26px;
+    border-radius: 15px;
+    font-size: 15px;
+    color: #b6b9bc;
+    line-height: 30px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.control-menu li a::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 11px;
+    height: 11px;
+    margin-top: -5px;
+    border-radius: 50%;
+    background: #b6b9bc;
+    content: '';
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.control-active {
+    color: #fff !important;
+    background-color: #d82744 !important;
+}
+
+.control-active::after {
+    background-color: #fff !important;
+}
 
 .wrap {
     position: relative;

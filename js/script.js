@@ -75,11 +75,11 @@ window.onload = function () {
     $.each(submenu_box, function (index, item) {
         let temp = $(this).outerHeight();
         temp = Math.ceil(temp);
-        console.log(temp);
+        // console.log(temp);
         submenu_height.push(temp);
         
     });
-    console.log(submenu_height);
+    // console.log(submenu_height);
     $.each(gnb_li, function (index, item) {
         $(this).mouseenter(function () {
             let h = submenu_height[index];
@@ -200,4 +200,91 @@ window.onload = function () {
             prevEl: '.sw-control-prev',
         },
     });
+
 };
+
+$(document).ready(function(){
+    let section = $('.main > section');
+    let section_pos = [];
+    $.each(section, function(index, item){
+        let temp = $(this).offset().top;
+        temp = parseInt(temp);
+        section_pos.push(temp);
+    });
+    // footer 빠진 상태로 저장
+    let footer_pos = $('.footer').offset().top;
+    footer_pos = parseInt(footer_pos);
+    section_pos.push(footer_pos);
+    
+    let section_index = 0;
+    let section_total = section_pos.length;
+    let section_scoll = 0;
+    let section_speed = 1000;
+
+    // 윈도우 스크롤 처리
+    $(window).scroll(function(){
+
+    });
+
+    // 마우스 휠 처리
+    $(window).bind('mousewheel DOMMouseScroll', function (event){
+        
+        let distance = event.originalEvent.wheelDelta;
+        if (distance == null) {
+            distance = event.originalEvent.detail * -1;
+        }
+
+        
+        if(section_scoll == 1) {
+            return;
+        }
+        section_scoll = 1;
+
+        if(distance < 0) {
+            // console.log('화면 올라갑니다');
+            section_index++;
+            if(section_index >= section_total) {
+                section_index = section_total - 1;
+                
+                section_scoll = 0;
+                return;
+            }
+        } else {
+            // console.log('화면 내려갑니다');
+            section_index--;
+            if(section_index < 0) {
+                section_index = 0;
+
+                section_scoll = 0;
+                return;
+            }
+        }
+        sectionFn();
+    });
+
+    let control_menu = $('.control-menu a');
+    $.each(control_menu, function(index, item){
+        $(this).click(function(event){
+            event.preventDefault();
+            section_index = index;
+            sectionFn();
+        });
+    });
+
+    function sectionFn(){
+        let temp = section_pos[section_index];
+        control_menu.removeClass('control-active');
+        control_menu.eq(section_index).addClass('control-active');
+        $('html').stop().animate({
+            scrollTop : temp
+
+        }, section_speed, function(){
+            section_scoll = 0;
+        });
+        
+
+    };
+
+
+    sectionFn();
+});
