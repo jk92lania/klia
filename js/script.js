@@ -216,10 +216,24 @@ $(document).ready(function(){
     footer_pos = parseInt(footer_pos);
     section_pos.push(footer_pos);
     
+
+    $(window).resize(function(){
+        section_pos = [];
+        $.each(section, function(index, item){
+            let temp = $(this).offset().top;
+            temp = parseInt(temp);
+            section_pos.push(temp);
+        });
+        footer_pos = $('.footer').offset().top;
+        footer_pos = parseInt(footer_pos);
+        section_pos.push(footer_pos);
+        sectionFn();
+    });
+
     let section_index = 0;
     let section_total = section_pos.length;
     let section_scoll = 0;
-    let section_speed = 1000;
+    let section_speed = 500;
 
     // 윈도우 스크롤 처리
     $(window).scroll(function(){
@@ -229,16 +243,20 @@ $(document).ready(function(){
     // 마우스 휠 처리
     $(window).bind('mousewheel DOMMouseScroll', function (event){
         
+        event.preventDefault();
+        event.stopPropagation();
+        if(section_scoll == 1) {
+            return;
+        }
+        section_scoll = 1;
+        
         let distance = event.originalEvent.wheelDelta;
         if (distance == null) {
             distance = event.originalEvent.detail * -1;
         }
 
+        console.log(distance);
         
-        if(section_scoll == 1) {
-            return;
-        }
-        section_scoll = 1;
 
         if(distance < 0) {
             // console.log('화면 올라갑니다');
@@ -273,8 +291,10 @@ $(document).ready(function(){
 
     function sectionFn(){
         let temp = section_pos[section_index];
+       
         control_menu.removeClass('control-active');
         control_menu.eq(section_index).addClass('control-active');
+        
         $('html').stop().animate({
             scrollTop : temp
 
@@ -287,4 +307,44 @@ $(document).ready(function(){
 
 
     sectionFn();
+
+    // nav 기능 구현
+    let gotop = $('.gotop');
+    let goup = $('.goup');
+    let godown = $('.godown');
+    gotop.click(function(event){
+        event.preventDefault();
+        if(section_scoll == 1) {
+            return;
+        }
+        section_scoll = 1;
+        section_index = 0;
+        sectionFn();
+    });
+    goup.click(function(event){
+        event.preventDefault();
+        if(section_scoll == 1) {
+            return;
+        }
+        section_scoll = 1;
+        section_index--;
+        if(section_index < 0) {
+            section_index = 0;
+
+        }
+        sectionFn();
+    });
+    godown.click(function(event){
+        event.preventDefault();
+        if(section_scoll == 1) {
+            return;
+        }
+        section_scoll = 1;
+        section_index++;
+        if(section_index >= section_total -1 ) {
+            section_index = section_total - 2;
+
+        }
+        sectionFn();
+    });
 });

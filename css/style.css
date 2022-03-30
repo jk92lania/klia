@@ -34,6 +34,7 @@ button {
 html {
     font-size: 10px;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 body {
@@ -316,6 +317,47 @@ body {
 
 .control-active::after {
     background-color: #fff !important;
+}
+
+
+.control-nav {
+    position: absolute;
+    right: 0;
+    top: 330px;
+}
+
+.control-nav li {
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.control-nav li a {
+    position: relative;
+    display: block;
+
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 32px;
+    color: #000;
+    border-radius: 50%;
+    background-color: #dadde1;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.goup {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+}
+.godown {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+}
+
+.gotop {
+    color: #fff !important;
+    background-color: #d82744 !important;
 }
 
 .wrap {
