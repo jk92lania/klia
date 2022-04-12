@@ -143,6 +143,18 @@ body {
     background-color: #272727;
 }
 
+@media all and (max-width:1200px) {
+    
+    .section-title::before {
+        margin-top: 90px;
+    }
+
+    .section-title {
+        padding-top: 120px !important;
+        padding: 80px 0;
+    }
+}
+
 .container {
     position: relative;
     display: block;
@@ -609,7 +621,8 @@ body {
     position: relative;
     display: table-cell;
     width: 25%;
-    padding: 35px 40px;
+    /* padding: 35px 40px; */
+    padding: 35px 3.125%;
 
     border-left: 1px solid #dcdddf;
 }
@@ -623,6 +636,8 @@ body {
     color: #000000;
     font-weight: 700;
     margin-bottom: 25px;
+
+    word-break: break-all;
 }
 
 .submenu-list-sub {
@@ -656,7 +671,7 @@ body {
 
 @media all and (max-width: 1600px) {
     .quick {
-        top: 90px;
+        top: 95px;
     }
 }
 
@@ -673,12 +688,20 @@ body {
         width: 100%;
     }
 
-    .control {
+    .control-menu {
         display: none;
+    }
+
+    .control-nav li {
+        display: none;
+    }
+
+    .control-nav li:last-child {
+        display: block;
     }
 }
 
-@media all and (max-width: 800px) {
+@media all and (max-width: 700px) {
     .logo {
         display: none;
     }
@@ -690,9 +713,27 @@ body {
     .gnb>li {
         font-size: 17px;
     }
+
+    .submenu-list {
+        display: block;
+    }
+
+    .submenu-list>li {
+        display: block;
+        width: 100%;
+        border: 0;
+        padding: 0 3.1235%;
+    }
+
+    .submenu-list-cate {
+        margin-bottom: 15px;
+    }
+
+    .submenu-list-sub-2x {
+        min-height: 50px !important;
+    }
 }
 
-@media all and (max-width: 590px) {}
 
 /* 메인 */
 .main {
@@ -1125,13 +1166,9 @@ body {
         height: auto;
     }
 
-    .visual-box .pt-38 {}
-
     .visual-box .pr-45 {
         padding-right: 5%;
     }
-
-    .visual-box .pb-38 {}
 
     .visual-box .pl-45 {
         padding-left: 5%;
@@ -1728,15 +1765,6 @@ body {
         padding-bottom: 100px;
     }
 
-    .section-title::before {
-        margin-top: 90px;
-    }
-
-    .section-title {
-        padding-top: 120px !important;
-        padding: 80px 0;
-    }
-
     .news-menu a:nth-child(1) {
         display: block !important;
     }
@@ -1983,7 +2011,7 @@ body {
 .customer-box-cont {
     position: relative;
     display: block;
-    width: calc(25% - 15px);
+    width: calc(25% - 25px);
 
     border-radius: 16px;
     background-color: #fff;
@@ -2468,8 +2496,6 @@ body {
         max-height: auto !important;
         margin-bottom: 20px;
     }
-
-
 }
 
 
@@ -2505,9 +2531,6 @@ body {
         font-size: 14px;
         line-height: 1.4;
     }
-
-
-
 }
 
 @media all and (max-width:580px) {
@@ -2520,7 +2543,6 @@ body {
         display: none;
         ;
     }
-
 }
 
 /* 회원사 */
@@ -2653,6 +2675,7 @@ body {
         width: 94%;
     }
 }
+
 @media all and (max-width:1200px) {
     .partner .container {
         padding-bottom: 0;
@@ -2666,7 +2689,7 @@ body {
 }
 
 @media all and (max-width: 760px) {
-    
+
     .partner .section-title::before {
         margin-top: 30px;
         width: 17px;
@@ -2675,9 +2698,9 @@ body {
 
     .partner .section-title {
         padding-top: 40px !important;
-        padding-bottom: 30px; 
-        font-size: 24px;       
-    } 
+        padding-bottom: 30px;
+        font-size: 24px;
+    }
 
     .partner .container {
         padding-bottom: 20px;
@@ -2709,7 +2732,7 @@ body {
 
 .banner .sw-control-prev {
     position: absolute;
-    left: -15px;
+    left: 5px;
     top: 50%;
     transform: translateY(-50%);
     display: block;
@@ -2724,7 +2747,7 @@ body {
 
 .banner .sw-control-next {
     position: absolute;
-    right: -15px;
+    right: 5px;
     top: 50%;
     transform: translateY(-50%);
     display: block;
@@ -2737,7 +2760,23 @@ body {
     cursor: pointer;
 }
 
+@media all and (max-width:760px) {
+    .banner .container {
+        width: 94%;
+    }
 
+    .sw-banner a img {
+        height: 50px;
+    }
+
+    .banner .sw-control-prev {
+        transform: translateY(-50%) scale(0.5);
+    }
+
+    .banner .sw-control-next {
+        transform: translateY(-50%) scale(0.5);
+    }
+}
 
 /* 하단 */
 .footer {
@@ -2819,4 +2858,40 @@ body {
 
 .web {
     width: 57px;
+}
+
+@media all and (max-width:1280px) {
+    .footer .container {
+        width: 93%;
+        padding: 20px 0;
+    }
+
+    .footer-list li {
+        font-size: 11px;
+    }
+
+    .footer-list li:first-child {
+        margin-bottom: 0;
+    }
+
+    .footer-list li:last-child {
+        margin-top: 0;
+    }
+
+    .footer-list strong {
+        font-size: 12px;
+    }
+
+    .footer-right {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .wa {
+        width: 50px;
+    }
+
+    .web {
+        width: 30px;
+    }
 }

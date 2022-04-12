@@ -1,7 +1,12 @@
 window.onload = function () {
     AOS.init({
-        once : true
+        // once : true,
+        disable: function () {
+            var desktop = 1280;
+            return window.innerWidth < desktop;
+          } 
     });
+    
 
     // 스크롤시 애니메이션    
     $(".news-top").each(function(index, el) {
@@ -11,16 +16,22 @@ window.onload = function () {
           handler: function(direction) {            
             var element = $(this.element);
             var delay = element.attr('data-delay');
-            setTimeout(function() {
-                if(direction == "down") {
-                    element.addClass('slideUp2');
-                    element.addClass('effect-op-active');
-                }else{
-                    element.removeClass('slideUp2');
-                    element.removeClass('effect-op-active');
-                }
-            }, delay);
-            // this.destroy();
+            // 1280 이상일 때
+            if(window_width > 1280) {
+                setTimeout(function() {
+                    if(direction == "down") {
+                        element.addClass('slideUp2');
+                        element.addClass('effect-op-active');
+                    }else{
+                        element.removeClass('slideUp2');
+                        element.removeClass('effect-op-active');
+                    }
+                }, delay);
+                // this.destroy();
+            } else {
+                element.addClass('effect-op-active');
+            }
+
           },
           offset: '90%'
         });    
@@ -34,16 +45,24 @@ window.onload = function () {
           handler: function(direction) {            
             var element = $(this.element);
             var delay = element.attr('data-delay');
-            setTimeout(function() {
-                if(direction == "down") {
-                    element.addClass('slideUp2');
-                    element.addClass('effect-op-active');
-                }else{
-                    element.removeClass('slideUp2');
-                    element.removeClass('effect-op-active');
-                }
-            }, delay);
-            // this.destroy();
+            
+            // 1280 이상일 때 
+            if(window_width > 1280) {
+                setTimeout(function() {
+                    if(direction == "down") {
+                        element.addClass('slideUp2');
+                        element.addClass('effect-op-active');
+                    }else{
+                        element.removeClass('slideUp2');
+                        element.removeClass('effect-op-active');
+                    }
+                }, delay);
+                // this.destroy();
+                
+            } else {
+                element.addClass('effect-op-active');
+
+            }
           },
           offset: '90%'
         });    
@@ -57,16 +76,24 @@ window.onload = function () {
           handler: function(direction) {            
             var element = $(this.element);
             var delay = element.attr('data-delay');
-            setTimeout(function() {
-                if(direction == "down") {
-                    element.addClass('slideUp');
-                    element.addClass('effect-op-active');
-                }else{
-                    element.removeClass('slideUp');
-                    element.removeClass('effect-op-active');
-                }
-            }, delay);
-            // this.destroy();
+            
+            if(window_width > 1280) {
+                setTimeout(function() {
+                    if(direction == "down") {
+                        element.addClass('slideUp');
+                        element.addClass('effect-op-active');
+                    }else{
+                        element.removeClass('slideUp');
+                        element.removeClass('effect-op-active');
+                    }
+                }, delay);
+                // this.destroy();
+                
+            }else {
+                element.addClass('effect-op-active');
+
+            }
+            
           },
           offset: '90%'
         });    
@@ -80,16 +107,23 @@ window.onload = function () {
           handler: function(direction) {            
             var element = $(this.element);
             var delay = element.attr('data-delay');
-            setTimeout(function() {
-                if(direction == "down") {
-                    element.addClass('slideUp');
-                    element.addClass('effect-op-active');
-                }else{
-                    element.removeClass('slideUp');
-                    element.removeClass('effect-op-active');
-                }
-            }, delay);
-            // this.destroy();
+            
+            if(window_width > 1280){
+                setTimeout(function() {
+                    if(direction == "down") {
+                        element.addClass('slideUp');
+                        element.addClass('effect-op-active');
+                    }else{
+                        element.removeClass('slideUp');
+                        element.removeClass('effect-op-active');
+                    }
+                }, delay);
+                // this.destroy();
+                
+            }else {
+                element.addClass('effect-op-active');
+
+            }
           },
           offset: '90%'
         });    
@@ -127,6 +161,17 @@ window.onload = function () {
         submenu_height.push(temp);
         
     });
+     // 리사이징 할때 마다 계산해라
+    $(window).resize(function(){
+        $.each(submenu_box, function (index, item) {
+            let temp = $(this).outerHeight();
+            temp = Math.ceil(temp);
+            submenu_height[index] = temp;
+        });
+    });
+
+
+
     // console.log(submenu_height);
     $.each(gnb_li, function (index, item) {
         $(this).mouseenter(function () {
@@ -249,9 +294,8 @@ window.onload = function () {
         },
     });
 
-};
 
-$(document).ready(function(){
+    let window_width = $(window).width();
     
     // visual tab 기능
     let news_menu = $('.news-menu a');
@@ -267,6 +311,7 @@ $(document).ready(function(){
     });
 
 
+    // sectiion 크기
     let section = $('.main > section');
     let section_pos = [];
     $.each(section, function(index, item){
@@ -281,7 +326,6 @@ $(document).ready(function(){
     
 
     let wheel_active = 1;
-    let window_width = $(window).width();
     if(window_width >= 1280) {
         wheel_active = 1;
     }else {
@@ -289,23 +333,23 @@ $(document).ready(function(){
     }
     $(window).resize(function(){
 
-    let window_width = $(window).width();
-    if(window_width >= 1280) {
-        wheel_active = 1;
+        let window_width = $(window).width();
+        if(window_width >= 1280) {
+            wheel_active = 1;
 
-        // 보도자료 선택
-        let news_menu_has = news_menu.eq(0).hasClass('news-menu-active');
-        if(news_menu_has == true) {
-            news_menu.eq(1).trigger('click');
+            // 보도자료 선택
+            let news_menu_has = news_menu.eq(0).hasClass('news-menu-active');
+            if(news_menu_has == true) {
+                news_menu.eq(1).trigger('click');
 
+            }else {
+                
+            }
         }else {
-            
+            wheel_active = 0;
+            // 1280 이상시
+            // return;
         }
-    }else {
-        wheel_active = 0;
-        // 1280 이상시
-        return;
-    }
 
         section_pos = [];
         $.each(section, function(index, item){
@@ -317,13 +361,18 @@ $(document).ready(function(){
         });
         footer_pos = $('.footer').offset().top;
         footer_pos = parseInt(footer_pos);
-        section_pos.push(footer_pos);
+        // section_pos.push(footer_pos);
         // or
-        // section_pos[section_total-1] = footer_pos;
+        section_pos[section_total-1] = footer_pos;
         
-        // console.log(section_pos);
-        let temp = section_pos[section_index];
-        $('html').scrollTop(temp);
+        // 1280 이상일 때 위치를 잡아줘야 한다
+        // 화면너비 변경시 마우스 휠 적용
+        if(wheel_active == 1) {
+            let temp = section_pos[section_index];
+            $('html').scrollTop(temp);
+        }
+
+       
     });
 
     let section_index = 0;
@@ -448,4 +497,9 @@ $(document).ready(function(){
         }
         sectionFn();
     });
+};
+
+$(document).ready(function(){
+    
+    
 });
