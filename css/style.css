@@ -2395,67 +2395,68 @@ body {
 
 .worker-ani .ani-4-1 {
     left: -53px;
-    top: -72px;
+    top: -90px;
     transition: all 0.4s ease-out 0s;
 }
 
+.worker-ani .worker-ani-chair {
+    position: absolute;
+    left: -60px;
+    top: -100px;
+    width: 100%;
+    /* height: 550px; */
+}
+
 .worker-ani .ani-4-2 {
-    left: -50px;
-    top: -78px;
+    position: relative;
     transition: all 0.4s ease-out 0.02s;
 }
 
 .worker-list-box:hover .ani-4-2 {
-    left: -50px;
-    top: -100px;
 }
 
 .worker-ani .ani-4-3 {
-    left: -50px;
-    top: 272px;
-    /* top: 195px; */
+    position: relative;
+    top: -20px;
     transition: all 0.4s ease-out 0.02s;
 }
 
 .worker-list-box:hover .ani-4-3 {
-    left: -50px;
-    top: 220px;
-    /* top: 155px; */
 }
 
 .worker-ani .ani-4-4 {
     left: -50px;
-    top: -70px;
+    top: -96px;
     transition: all 0.4s ease-out 0.02s;
 }
 
 .worker-list-box:hover .ani-4-4 {
     left: -50px;
-    top: -120px;
+    top: -150px;
 }
 
 
 .worker-ani .ani-4-5 {
-    left: -40px;
-    top: -69px;
+    left: -62px;
+    top: -100px;
     transition: all 0.4s ease-out 0.02s;
 }
 
 .worker-list-box:hover .ani-4-5 {
-    left: -32px;
-    top: -92px;
+    left: -48px;
+    top: -110px;
 }
 
 .worker-ani .ani-4-6 {
-    left: -48px;
-    top: -80px;
+    left: -32px;
+    top: -90px;
 
     transition: all 0.4s ease-out 0.02s;
 }
 
 .worker-list-box:hover .ani-4-6 {
-    left: -60px;
-    top: -80px;
+    left: -45px;
+    /* top: -80px; */
 }
 
 
@@ -2480,8 +2481,13 @@ body {
     }
 
     .worker-ani {
-        left: 19%;
-        bottom: -28%;
+        /* left: 19%;
+        bottom: -28%; */
+    }
+
+    .worker-ani-chair {
+        /* width: 31.25vw;
+        height: 39.28vw; */
     }
 }
 
@@ -2496,6 +2502,13 @@ body {
         max-height: auto !important;
         margin-bottom: 20px;
     }
+
+    .worker-ani {
+        left: 8%;
+        top: -40%;
+    }
+
+    
 }
 
 
@@ -2517,8 +2530,8 @@ body {
     }
 
     .worker-ani {
-        left: 16%;
-        bottom: 0%;
+        /* left: 16%;
+        bottom: 0%; */
     }
 
     .worker-list-box h3 {
@@ -2535,8 +2548,8 @@ body {
 
 @media all and (max-width:580px) {
     .worker-ani {
-        left: 20%;
-        bottom: -9%;
+        /* left: 20%;
+        bottom: -9%; */
     }
 
     .worker-list-box p {
