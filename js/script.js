@@ -168,7 +168,10 @@ window.onload = function () {
             temp = Math.ceil(temp);
             submenu_height[index] = temp;
         });
+        console.log(submenu_height);
+        console.log("------------");
     });
+
 
 
 
@@ -180,10 +183,12 @@ window.onload = function () {
             submenu_div.css('border-bottom-width', 2);
             submenu_box.hide();
             submenu_box.eq(index).show();
-
+            
             gnb_li.find('a').removeClass('gnb-li-active');
             gnb_li.find('a').eq(index).addClass('gnb-li-active');
         });
+        
+        
     });
 
     let nav = $('.nav');
@@ -200,6 +205,7 @@ window.onload = function () {
         clearTimeout(menu_timer);
         submenu_div.css('height', 0);
         submenu_div.css('border-bottom-width', 0);
+        submenu_box.hide();
         gnb_li.find('a').removeClass('gnb-li-active');
     }
 
